@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    article::before{content: attr(data-index);}
+  </style>
+</head>
+<body>
+  <input type="text" autofocus>
+  <input type="text" autofocus>
+  <blockquote contenteditable="true">
+    <p> input your name</p>
+  </blockquote>
+  <!-- 自定义属性 -->
+  <ul>
+    <li data-id="1"></li>
+    <li data-id="2"></li>
+  </ul>
+  <article id="ele-art" data-col="2" data-index="123"></article>
+  <script>
+    const elem = document.querySelector('#ele-art')
+    console.log(elem.dataset);
+  </script>
+</body>
+</html>

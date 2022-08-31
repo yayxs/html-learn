@@ -1,0 +1,27 @@
+{
+  "name": "html-learn",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "npx nodemon live-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yayxs/html-learn.git"
+  },
+  "keywords": [
+    "html",
+    "html5",
+    "svg",
+    "canvas",
+    "front-end"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yayxs/html-learn/issues"
+  },
+  "homepage": "https://github.com/yayxs/html-learn#readme",
+  "main": "index.js",
+  "description": "",
+  "dependencies": {}
+}

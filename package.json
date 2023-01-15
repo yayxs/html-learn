@@ -2,7 +2,7 @@
   "name": "html-learn",
   "version": "0.0.1",
   "scripts": {
-    "dev": "npx nodemon live-server.js"
+    "dd": "vitepress dev docs"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "homepage": "https://github.com/yayxs/html-learn#readme",
   "main": "index.js",
   "description": "",
-  "dependencies": {}
+  "dependencies": {
+    "vitepress": "1.0.0-alpha.36",
+    "vue": "^3.2.45"
+  }
 }

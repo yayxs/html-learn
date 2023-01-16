@@ -3,3 +3,5 @@
 ![](https://microsoft.github.io/Web-Dev-For-Beginners/sketchnotes/webdev101-html.png)
 
 - [https://microsoft.github.io/Web-Dev-For-Beginners/#/3-terrarium/1-intro-to-html/README](https://microsoft.github.io/Web-Dev-For-Beginners/#/3-terrarium/1-intro-to-html/README)
+
+- [https://github.com/bradtraversy/50projects50days](https://github.com/bradtraversy/50projects50days)

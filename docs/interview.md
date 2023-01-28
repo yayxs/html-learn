@@ -4,13 +4,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>first page</title>
+    <title>html-questions</title>
   </head>
   <body></body>
 </html>
 ```
 
-- `.html` 一般指的是 html 文件，为什么还要`<html>` 标记一下呢
+- `.html` 一般指的是 html 文件，为什么还要`<html>` 标记一下呢 （head first）
 - `style` 的标签的 `type` 属性有没有存在的必要呢
 - 什么是`web` 标准
 - `<!DOCTYPE html>`的作用与意义是什么？

@@ -83,3 +83,19 @@
 ## whatwg/html
 
 我曾画过一段时间看这份`whatwg`。这是中文翻译 [https://whatwg-cn.github.io/html/](https://whatwg-cn.github.io/html/)
+
+## GoogleChrome/web.dev
+
+在这里 [https://web.dev/learn/html/](https://web.dev/learn/html/)
+
+## diegocard/awesome-html5
+
+一些与`html`有关的资源
+
+## jgthms/html-reference
+
+HTML Reference: a free guide to all HTML5 elements and attributes
+
+这个项目提供了一份 `html5` 的元素和属性，以`<a>` 标签为例子。
+
+[https://htmlreference.io/element/a/](https://htmlreference.io/element/a/)

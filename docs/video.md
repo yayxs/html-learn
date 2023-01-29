@@ -282,6 +282,64 @@ function onPlayerEnded() {
 <source src="video/chrome.webm#t=5,10" type="video/webm" />
 ```
 
+```js
+function initStart(params) {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    console.log(`your browser not support  navigator.mediaDevices.getUserMedia`)
+  } else {
+    const constraints = {
+      video: {
+        width: 400,
+        height: 300,
+        frameRate: 30 // 帧率
+      }, // 是否视频
+      audio: {} // 是否音频
+    }
+    navigator.mediaDevices
+      // 获取用户媒体
+      .getUserMedia(constraints)
+      // 获取媒体流
+      .then(getMediaStream)
+      // 获取设备的列表
+      .then(getListDevices)
+      // 异常了
+      .catch(handleError)
+  }
+}
+```
+
+```js
+function getMediaStream(stream) {
+  // 同意访问音视频数据
+  try {
+    const player = getEle('#player')
+    player.srcObject = stream
+    // 获取视频流成功之后然后创建设备选择
+    return navigator.mediaDevices.enumerateDevices()
+  } catch (error) {}
+}
+
+if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+  console.log(`your browser not support`)
+} else {
+  // navigator.mediaDevices
+  //   .enumerateDevices()
+  //   .then(getListDevices)
+  //   .catch(handleError)
+}
+```
+
+```js
+/**
+ * 设备分组
+ * @param {*} deviceInfos
+ */
+function getListDevices(deviceInfos) {
+  const sortList = handleGrouping(deviceInfos)
+  console.log(sortList)
+}
+```
+
 ## 相关链接
 
 - [https://www.freecodecamp.org/chinese/news/html-video-how-to-embed-a-video-player-with-the-html-5-video-tag/](https://www.freecodecamp.org/chinese/news/html-video-how-to-embed-a-video-player-with-the-html-5-video-tag/)

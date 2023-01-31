@@ -340,8 +340,260 @@ function getListDevices(deviceInfos) {
 }
 ```
 
+## 自定义视频播放器
+
+我们通过上文大致了解，`video` 标签，下面我们使用原生的 html css js 来自定义一个视频播放器
+
+html 部分：分为 `video` 标签 + `<i class="fa fa-play fa-2x"></i>` 播放和暂停的图标按钮 + `input` 进度条 + `span`时间
+
+![自定义播放器效果图]()
+页面的标题
+
+```html
+<h1>Custom Video Player</h1>
+```
+
+video 本身，只需要一个视频的链接 和一个类名 `screen`
+
+```html
+<video
+  class="screen"
+  src="https://cdn.jsdelivr.net/gh/chuzhixin/videos@master/video.mp4"
+  id="video"
+></video>
+```
+
+控制条
+
+```html
+<div class="controls">
+  <button class="btn" id="play">
+    <i class="fa fa-play fa-2x"></i>
+  </button>
+  <button class="btn" id="stop">
+    <i class="fa fa-stop fa-2x"></i>
+  </button>
+  <input
+    type="range"
+    id="progress"
+    class="progress"
+    min="0"
+    max="100"
+    step="0.1"
+    value="0"
+  />
+  <span class="timestamp" id="timestamp">00:00</span>
+</div>
+```
+
+接着用样式修饰，通用的界面修饰 `css/style.css`
+
+引入线上的字体
+
+```css
+/* 引入字体 */
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+```
+
+**body** 等通用的一些设置，包括设置盒模型
+
+```css
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Questrial', sans-serif;
+  background-color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  color: #fff;
+}
+```
+
+进度条的盒子样式
+
+```css
+.controls {
+  background-color: #333;
+  color: #fff;
+  width: 20%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+```
+
+两个图标按钮
+
+```css
+.controls .btn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.controls .fa-play {
+  color: #28a745;
+}
+
+.controls .fa-stop {
+  color: #dc3545;
+}
+```
+
+紧接着就是修改默认 `input range` 的默认样式。`input[type='range']` 样式修改的思路是
+
+0、新建 `css/progress.css` 文件
+1、把默认的样式去除
+2、考虑在不同浏览器内核的兼容
+3、然后自己定义 中间可以滑动的滑块的样式 以及 底部最长的条这两部分的样式
+
+```css
+input[type='range'] {
+  /* 隐藏滑块 并自定义滑块 */
+  -webkit-appearance: none;
+  /* 火狐浏览器需要指定宽度 */
+  width: 100%;
+  /* 谷歌浏览器是白色的，把白色设置为透明 达到隐藏的效果 */
+  background: transparent;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+input[type='range']:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type='range']::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  /* 隐藏滑块 */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* 针对WebKit/Blink 的风格设计 中间可以滑动的滑块 */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #fff;
+  cursor: pointer;
+  margin-top: -14px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background-color: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type='range']:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+```
+
+接着就是脚本 `script.js`，首先获取 dom 元素
+
+```js
+const video = document.getElementById('video') // 视频播放器本身 即是video标签
+const play = document.getElementById('play') // 播放按钮
+const stop = document.getElementById('stop') // 停止按钮
+const progress = document.getElementById('progress') // 进度条滑动
+
+const timestamp = document.getElementById('timestamp') // 进度时间
+```
+
+```js
+// 播放或者暂停视频
+function toggleVideoStatus() {
+  if (video.paused) {
+    video.play()
+  } else {
+    video.pause()
+  }
+}
+// 更新图标的状态
+function updatePlayIcon() {
+  if (video.paused) {
+    play.innerHTML = `<i class="fa fa-stop fa-2x"></i>`
+  } else {
+    play.innerHTML = `<i class="fa fa-pause fa-2x"></i>`
+  }
+}
+
+// 更新进度条
+
+function updateProgress() {
+  // 视频当前播放的时间点 / 视频的总时长
+  progress.value = (video.currentTime / video.duration) * 100
+  // 换算成分钟
+  let mins = Math.floor(video.currentTime / 60)
+  // 前面补0
+  if (mins < video.duration) {
+    mins = '0' + String(mins)
+  }
+
+  // 得到秒
+  let secs = Math.floor(video.currentTime % 60)
+  if (secs < video.duration) {
+    secs = '0' + String(secs)
+  }
+
+  timestamp.innerHTML = `${mins}:${secs}`
+}
+
+// 设置视频的时间和进度条
+function setVideoProgress() {
+  video.currentTime = (+progress.value * video.duration) / 100
+}
+// 停止视频
+
+function stopVideo() {
+  video.currentTime = 0
+  video.pause()
+}
+```
+
+最后在相对应的 dom 元素上添加事件绑定
+
+```js
+video.addEventListener('click', toggleVideoStatus)
+
+video.addEventListener('pause', updatePlayIcon)
+video.addEventListener('play', updatePlayIcon)
+video.addEventListener('timeupdate', updateProgress)
+
+play.addEventListener('click', toggleVideoStatus)
+stop.addEventListener('click', stopVideo)
+
+progress.addEventListener('change', setVideoProgress)
+```
+
 ## 相关链接
 
 - [https://www.freecodecamp.org/chinese/news/html-video-how-to-embed-a-video-player-with-the-html-5-video-tag/](https://www.freecodecamp.org/chinese/news/html-video-how-to-embed-a-video-player-with-the-html-5-video-tag/)
 
 - [<video> 和 <source> 标签](https://web.dev/i18n/zh/video-and-source-tags/)
+
+- [修改 input range 样式可以参考](https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/)

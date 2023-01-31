@@ -80,6 +80,18 @@
 
 [https://github.com/bradtraversy/50projects50days](https://github.com/bradtraversy/50projects50days)
 
+## dexteryy/spellbook-of-modern-webdev
+
+这个项目是一个册子，其中包含`html`的内容。是一份常用的链接和学习资源。
+
+## bradtraversy/vanillawebprojects
+
+一些很棒的使用原生 html 写的案例
+
+## learning-zone/website-templates
+
+一些 web 网站的模板
+
 ## whatwg/html
 
 我曾画过一段时间看这份`whatwg`。这是中文翻译 [https://whatwg-cn.github.io/html/](https://whatwg-cn.github.io/html/)
@@ -99,3 +111,65 @@ HTML Reference: a free guide to all HTML5 elements and attributes
 这个项目提供了一份 `html5` 的元素和属性，以`<a>` 标签为例子。
 
 [https://htmlreference.io/element/a/](https://htmlreference.io/element/a/)
+
+## MilenaCarecho/30diasDeCSS
+
+挑战在 30 天内写 30 个小项目
+
+# sadanandpai/frontend-mini-challenges
+
+一些前端的挑战
+
+# georgebrata/html-templates
+
+# bradtraversy/design-resources-for-developers#html--css-templates
+
+一些精美的模板
+
+# mdo/code-guide
+
+**这个项目讲的是编码的一些规范**，其中在写`html` 的时候有一些规范。这样写更好！
+
+1、关于自闭合标签的结尾的 `/` ，[html 规范 HTML5 spec](https://html.spec.whatwg.org/multipage/syntax.html#syntax-start-tag) 不要在自闭合（self-closing）元素的尾部添加斜线，就像 `<img>` ，在规范中可选的。
+
+```html
+<img src="images/company-logo.png" alt="Company" />
+```
+
+2、属性使用双引号
+
+```html
+<h1 class="hello-world">Hello, world!</h1>
+```
+
+3、标签不要大写，即便是 doctype 标签。
+
+4、关于 `html` 文档的语言表，可以阅读 [https://www.sitepoint.com/iso-2-letter-language-codes/](https://www.sitepoint.com/iso-2-letter-language-codes/)
+
+5、IE 的兼容模式
+
+IE 支持通过特定的 <meta> 标签来确定绘制当前页面所应该采用的 IE 版本。除非有强烈的特殊需求，否则最好是设置为 edge mode，从而通知 IE 采用其所支持的最新的绘制模式。
+
+```html
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+```
+
+6、引入 CSS 和 JavaScript 文件
+
+根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 type 属性，因为 text/css 和 text/javascript 分别是它们的默认值。
+
+## andreasbm/web-skills
+
+**这个项目对作为一个网络开发人员所要学习的有用技能的一个可视化概述**
+
+1、关于 htmld 的语法，你可以直接访问`MDN` 或者 [https://www.codecademy.com/learn/learn-html](https://www.codecademy.com/learn/learn-html)
+
+2、了解`html`的基础标签
+
+- [https://www.elated.com/first-10-html-tags/](https://www.elated.com/first-10-html-tags/)
+
+3、`form标签` [https://web.dev/learn/forms/](https://web.dev/learn/forms/)
+
+# zxuqian/html-css-examples
+
+这个项目是一下`html css` 的案例。

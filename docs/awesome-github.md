@@ -5,13 +5,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>一些很棒的 html 仓库</title>
   </head>
   <body></body>
 </html>
 ```
 
-从头开始学`HTML` 的话，可以先去 `github` 仓库看一下，根据 `star` 数，分析一下优秀的开源项目。前提需要给你的**浏览器** 安装一个翻译的插件，有助于理解全英文的仓库
+从头开始学`HTML` 的话，可以先去 `github` 仓库看一下，根据 `star` 数，分析一下优秀的开源项目。前提需要给你的**浏览器** 安装一个翻译的插件（我现在用的是 DeepL 翻译：阅读写作翻译器），有助于理解全英文的仓库。很多人推荐学习`html` 总是说什么不用花费太多时间。看一看 `mdn` 就好。还有就是 2 天时间就够了。看了这几天，有点感受
+
+1、`mdn`的文档看起来有点枯燥；有的英文还没完全翻译过来，但它依然很棒
+2、`html` 真的没有大家所说的那个简单
+3、学习`html`是需要长期，慢慢了解，但是当我们接触框架之后，越来越少的机会接触 html 本身
+
+看了一些`html` 的仓库，有几大类
+1、基于`html` 的框架
+2、web 开发的一些技能清单，其中包含`html` 部分
+3、一些高级标签 `video` `canvas` `svg` 等等
+4、还有一些 3D 相关的内容比如：`d3`
 
 ## microsoft/Web-Dev-For-Beginners
 
@@ -25,9 +35,22 @@
 
 [https://microsoft.github.io/Web-Dev-For-Beginners/#/7-bank-project/1-template-route/README](https://microsoft.github.io/Web-Dev-For-Beginners/#/7-bank-project/1-template-route/README)
 
-这篇讲的是如何使用 `<template id="dashboard">`标签和使用 js 脚本
+这篇讲的是如何使用 `<template id="dashboard">`标签和使用 js 脚本。在这里使用到了 `<template>` 标签
+
+```html
+<template id="login">
+  <h1>Bank App</h1>
+  <section>
+    <a href="/dashboard">Login</a>
+  </section>
+</template>
+```
+
+- [https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template)
 
 ## thedaviddias/Front-End-Checklist
+
+[中文文档](https://github.com/JohnsenZhou/Front-End-Checklist)
 
 以下标签属于 `meta tag`
 
@@ -51,11 +74,21 @@
 更多可以参阅这篇文章 [https://css-tricks.com/favicon-quiz/](https://css-tricks.com/favicon-quiz/)
 应该使用语义化的 html 标签
 
-这个清单不仅仅如此，是一份很好开始`web`的清单
+这个清单不仅仅如此，是一份很好开始`web`的清单以及一些最佳做法：
+
+1、`https://htmlreference.io/` html 所有的标签，下文会提及。
+2、如果你使用带有 target="\_blank "的外部链接，你的链接应该有一个 rel="noopener "属性，以防止标签被截取。
+3、字体相关：所有现代浏览器都支持 WOFF、WOFF2 和 TTF
+如何使用字体 [https://css-tricks.com/snippets/css/using-font-face-in-css/](https://css-tricks.com/snippets/css/using-font-face-in-css/)
+
+4、`Images` 图片
+
+- 图片需要压缩，工作中比较常用 [https://tinypng.com/](https://tinypng.com/)
+- 使用`srcset` 设置不同的大小
 
 ## joshbuchea/HEAD
 
-能在 HEAD 列表中找到 HTML 文档`<head>`标签内所有可配置的属性。
+能在 HEAD 列表中找到 HTML 文档`<head>`标签内所有可配置的属性。当我发现这个仓库的时候，简直太酷了。
 
 - `meta charset` 定义了网站的编码，utf-8 是标准的
 - `meta name="viewport"` 移动响应有关
@@ -76,9 +109,24 @@
 
 ## bradtraversy/50projects50days
 
-通过原生的代码，写出常见的效果，可以作为练习
+通过原生的代码，写出常见的效果，可以作为练习。
 
 [https://github.com/bradtraversy/50projects50days](https://github.com/bradtraversy/50projects50days)
+这些项目 50 个独特的小项目来磨练你的 HTML、CSS 和 JavaScript 技能。当然了主要是 `html`。
+举个例子：
+一个原始的 `button` 按钮
+
+```html
+<button class="btn" id="prev" disabled>上一步</button>
+```
+
+可以通过 css 的设置给人一种动态的感觉
+
+```css
+.btn:active {
+  transform: scale(0.98);
+}
+```
 
 ## dexteryy/spellbook-of-modern-webdev
 
@@ -94,7 +142,16 @@
 
 ## whatwg/html
 
-我曾画过一段时间看这份`whatwg`。这是中文翻译 [https://whatwg-cn.github.io/html/](https://whatwg-cn.github.io/html/)
+我曾花过一段时间看这份`whatwg`。这是中文翻译 [https://whatwg-cn.github.io/html/](https://whatwg-cn.github.io/html/)。
+分为几个版本
+1、多页版本
+2、单页版本
+3、PDF 版本
+看看目录：
+
+- **介绍章节**：介绍了怎么使用这个文档，以及规范性的内容。还讲了 `HTML vs XML syntax` 的不同（这在面试中频繁被问起）
+- **一些公共的部分**：讲了 html 中的数字、颜色、`URL` 通用的 DOM 接口等等
+  等等
 
 ## GoogleChrome/web.dev
 
@@ -161,6 +218,7 @@ IE 支持通过特定的 <meta> 标签来确定绘制当前页面所应该采用
 ## andreasbm/web-skills
 
 **这个项目对作为一个网络开发人员所要学习的有用技能的一个可视化概述**
+网络技能是对作为一个网络开发人员所要学习的有用技能的一个可视化概述。它对刚开始学习网络开发的人和已经在这个领域工作多年并想学习新东西的人都很有用。作为一个初学者，我鼓励你不要把这个网站看作是你需要知道的东西的最终清单，而要看作是你能学到什么和从哪里开始的例子。这些技能是根据我建议你采取的学习途径按时间顺序排列的，但你可以自由跳转。
 
 1、关于 htmld 的语法，你可以直接访问`MDN` 或者 [https://www.codecademy.com/learn/learn-html](https://www.codecademy.com/learn/learn-html)
 
@@ -169,6 +227,22 @@ IE 支持通过特定的 <meta> 标签来确定绘制当前页面所应该采用
 - [https://www.elated.com/first-10-html-tags/](https://www.elated.com/first-10-html-tags/)
 
 3、`form标签` [https://web.dev/learn/forms/](https://web.dev/learn/forms/)
+
+4、`svg` 标签：[https://svgontheweb.com/](https://svgontheweb.com/)
+
+经过通篇的阅读，发现是把某个垂直的内容拆出来了。但同时出现的网站：
+
+1、`mdn`
+
+2、[https://www.codecademy.com/catalog/language/html-css](https://www.codecademy.com/catalog/language/html-css)
+
+3、[https://web.dev/learn/forms/](https://web.dev/learn/forms/)
+
+4、[https://dev.to/](https://dev.to/)
+
+5、[https://www.w3schools.com/css/css_specificity.asp](https://www.w3schools.com/css/css_specificity.asp)
+
+6、[https://htmldom.dev/](https://htmldom.dev/)
 
 # zxuqian/html-css-examples
 

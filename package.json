@@ -1,9 +1,6 @@
 {
   "name": "html-learn",
   "version": "0.0.1",
-  "scripts": {
-    "dd": "vitepress dev docs"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yayxs/html-learn.git"
@@ -24,11 +21,8 @@
   "homepage": "https://github.com/yayxs/html-learn#readme",
   "main": "index.js",
   "description": "",
-  "dependencies": {
-    "vitepress": "1.0.0-alpha.36",
-    "vue": "^3.2.45"
-  },
   "devDependencies": {
-    "prettier": "^2.8.3"
+    "prettier": "^3.3.3",
+    "vite": "^5.4.2"
   }
 }

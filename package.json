@@ -1,5 +1,9 @@
 {
   "name": "html-learn",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev"
+  },
   "version": "0.0.1",
   "repository": {
     "type": "git",
@@ -13,15 +17,15 @@
     "front-end",
     "video"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "vanlee",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/yayxs/html-learn/issues"
   },
   "homepage": "https://github.com/yayxs/html-learn#readme",
-  "main": "index.js",
   "description": "",
   "devDependencies": {
+    "@types/node": "^22.5.1",
     "prettier": "^3.3.3",
     "vite": "^5.4.2"
   }

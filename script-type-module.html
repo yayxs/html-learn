@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="module">
+    import { foo } from './script-type-module.js';
+    foo()
+    console.log(typeof button)
+  </script>
+
+
+  <script type="module">
+    console.log(import.meta.url); // 脚本的 URL
+    // 对于内联脚本来说，则是当前 HTML 页面的 URL
+  </script>
+
+  <button id="button">Button</button>
+</body>
+
+</html>
